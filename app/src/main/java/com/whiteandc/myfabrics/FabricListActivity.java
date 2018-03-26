@@ -13,12 +13,15 @@ public class FabricListActivity extends AppCompatActivity {
     @BindView(R.id.rv_fabrics)
     RecyclerView rvFabrics;
 
+    FabricAdapter adapter = new FabricAdapter();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fabric_list);
         ButterKnife.bind(this);
 
+        rvFabrics.setAdapter(adapter);
         rvFabrics.setLayoutManager(new LinearLayoutManager(this));
 
     }
