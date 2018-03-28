@@ -42,5 +42,6 @@ public class FabricListActivity extends AppCompatActivity implements FabricViewI
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        presenter.detachView();
     }
 }
