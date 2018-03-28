@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.whiteandc.myfabrics.model.Fabric;
 
 import java.util.ArrayList;
@@ -30,7 +29,7 @@ public class FabricAdapter extends RecyclerView.Adapter<FabricAdapter.FabricView
     public FabricViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         context = parent.getContext();
         LayoutInflater layoutInflater = LayoutInflater.from(context);
-        View view = layoutInflater.inflate(R.layout.item_fabric, null);
+        View view = layoutInflater.inflate(R.layout.item_fabric, parent, false);
         FabricViewHolder viewHolder = new FabricViewHolder(view);
         return viewHolder;
     }
@@ -38,13 +37,18 @@ public class FabricAdapter extends RecyclerView.Adapter<FabricAdapter.FabricView
     @Override
     public void onBindViewHolder(FabricViewHolder holder, int position) {
         Fabric fabric = fabricList.get(position);
-        Glide.with(context).load(fabric.getImgPath()).into(holder.ivFabric);
+        //Glide.with(context).load(fabric.getImgPath()).into(holder.ivFabric);
+        holder.ivFabric.setImageDrawable(holder.itemView.getResources().getDrawable(R.drawable.bluefabric));
         holder.tvNickName.setText(fabric.getNickName());
     }
 
     @Override
     public int getItemCount() {
         return fabricList.size();
+    }
+
+    public void addFabrics(List<Fabric> fabrics) {
+        this.fabricList.addAll(fabrics);
     }
 
     class FabricViewHolder extends RecyclerView.ViewHolder{
@@ -56,7 +60,7 @@ public class FabricAdapter extends RecyclerView.Adapter<FabricAdapter.FabricView
 
         public FabricViewHolder(View itemView) {
             super(itemView);
-            ButterKnife.bind(itemView);
+            ButterKnife.bind(this, itemView);
         }
     }
 }
