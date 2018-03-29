@@ -1,5 +1,7 @@
 package com.whiteandc.myfabrics;
 
+import android.content.Context;
+
 import com.whiteandc.myfabrics.model.Fabric;
 
 import java.util.List;
@@ -10,4 +12,5 @@ import java.util.List;
 
 public interface FabricViewInterface {
     void showFabrics(List<Fabric> fabrics);
+    Context getApplicationContext();
 }
