@@ -23,6 +23,7 @@ public class FabricListActivity extends AppCompatActivity implements FabricViewI
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_fabric_list);
         ButterKnife.bind(this);
 
